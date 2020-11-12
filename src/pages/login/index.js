@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import {getAuthCodeApi,verifyCodeApi,passwordLoginApi} from "../../api/home"
 // import { storeToken } from "../../storage/token"
 
-// import { Toast } from "@ant-design/react-native"
+import { Toast } from "@ant-design/react-native"
 const styles = StyleSheet.create({
     formItem:{
         marginTop:10
@@ -62,7 +62,7 @@ const Login = () => {
             console.log(data,phone,password)
             if(data.code==200) {
             //    await storeToken(data.token)
-            //    Toast.success('登录成功')
+               Toast.success('登录成功')
                navigation.navigate('Home')
             }else {
                 console.log(data)

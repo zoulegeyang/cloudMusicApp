@@ -1,11 +1,12 @@
-import React, {  useEffect, useMemo, useState } from 'react'
+import React, {  useContext, useEffect, useMemo, useState } from 'react'
 import { View, Text, Image, Button, StyleSheet, Pressable } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native';
 import {getAuthCodeApi,verifyCodeApi,passwordLoginApi} from "../../api/home"
+import {MyContext} from "../../../App"
 // import { storeToken } from "../../storage/token"
 
-// import { Toast } from "@ant-design/react-native"
+import { Toast } from "@ant-design/react-native"
 const styles = StyleSheet.create({
     formItem:{
         marginTop:10
@@ -17,6 +18,7 @@ const Login = () => {
     const [phone,setPhone] = useState('')
     const [authcode,setAuthcode] = useState('')
     const [password,setPassword] = useState('')
+    const {user} = useContext(MyContext)
     const isDisable = useMemo(()=>{
         if(phone.trim().length===11) {
             return false
@@ -62,7 +64,8 @@ const Login = () => {
             console.log(data,phone,password)
             if(data.code==200) {
             //    await storeToken(data.token)
-            //    Toast.success('登录成功')
+               Toast.success('登录成功')
+               user.userDispatch(data.profile.userId)
                navigation.navigate('Home')
             }else {
                 console.log(data)

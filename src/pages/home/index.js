@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { View, Text } from 'react-native';
 import NavBar from "./NavBar"
 import SliderBar from "./SlideBar"
 import { MyContext } from "../../../App"
 function HomeScreen() {
-  const {theme} = useContext(MyContext);
+  const {theme,user} = useContext(MyContext);
   // console.log(theme)
   const [ isShow, setShow ] = useState(false)
   const changeShow = ()=>{
@@ -13,6 +13,9 @@ function HomeScreen() {
   const hideShow = ()=>{
     setShow(false)
   }
+  useEffect(()=>{
+    console.log(user)
+  },[])
     return (
       <View style={{flex:1,backgroundColor:theme.bgc}}>
         <SliderBar isShow={isShow} hideShow={hideShow}></SliderBar>

@@ -37,13 +37,15 @@ function reducer(state, action) {
   }
 }
 
+import { userIniState,userReducer} from "./src/reducer/user"
 
 function App() {
 
   const [theme,dispatch] = React.useReducer(reducer,initialState);
+  const [userId,userDispatch] = React.useReducer(userReducer,userIniState)
   return (
     <Provider>
-    <MyContext.Provider value={{theme,dispatch}} >
+    <MyContext.Provider value={{theme,dispatch,user:{userId,userDispatch}}} >
     <NavigationContainer>
       <Router></Router>
     </NavigationContainer>

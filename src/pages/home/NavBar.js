@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState, useContext } from 'react'
 import { View, Image, StyleSheet, Text, Pressable} from "react-native"
 import { MyContext } from "../../../App"
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
     // },
   });
 const NavBar = ({changeShow,hideShow}) => {
+    const navigation =  useNavigation();
     const theme = useContext(MyContext)
     const [activeName,changeActiveName] = useState('我的');
     return (
@@ -28,13 +30,13 @@ const NavBar = ({changeShow,hideShow}) => {
             </View>
             </Pressable>
             <View style={{...styles.container,alignItems:"center",flex:5}}>
-                <Text style={{fontSize:activeName=='我的'?30:20,color:activeName=='我的'?'black':'#333'}} onPress={()=>{changeActiveName('我的')}}>我的</Text>
+                <Text style={{fontSize:activeName=='我的'?30:20,color:activeName=='我的'?'black':'#333'}} onPress={()=>{changeActiveName('我的');navigation.navigate('Profile')}}>我的</Text>
 
-                <Text style={{fontSize:activeName=='发现'?30:20,color:activeName=='发现'?'black':'#333'}} onPress={()=>{changeActiveName('发现')}}>发现</Text>
+                <Text style={{fontSize:activeName=='发现'?30:20,color:activeName=='发现'?'black':'#333'}} onPress={()=>{changeActiveName('发现');navigation.navigate('Find')}}>发现</Text>
 
                 
-                <Text style={{fontSize:activeName=='云村'?30:20,color:activeName=='云村'?'black':'#333'}} onPress={()=>{changeActiveName('云村')}}>云村</Text>
-                <Text style={{fontSize:activeName=='视频'?30:20,color:activeName=='视频'?'black':'#333'}} onPress={()=>{changeActiveName('视频')}}>视频</Text>
+                <Text style={{fontSize:activeName=='云村'?30:20,color:activeName=='云村'?'black':'#333'}} onPress={()=>{changeActiveName('云村');navigation.navigate('Country')}}>云村</Text>
+                <Text style={{fontSize:activeName=='视频'?30:20,color:activeName=='视频'?'black':'#333'}} onPress={()=>{changeActiveName('视频');navigation.navigate('Video')}}>视频</Text>
             </View>
             <View style={{flex:1,alignItems:'center'}}>
                 <Image source={require("../../assets/search.png")} style={{width:20,height:20,}}></Image>

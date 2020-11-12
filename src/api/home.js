@@ -17,3 +17,8 @@ export function passwordLoginApi(params) {
     let url = baseUrl+'login/cellphone'+parseParams(params)
     return fetch(url,{method:'GET'})
 }
+
+export function getUserInfo(params) {
+    let url = baseUrl+'user/detail'+parseParams(params)
+    return fetch(url,{method:'GET'})
+} 

@@ -13,7 +13,7 @@ function Router() {
   // console.log(getToken())
   return (
 
-      <FullStack.Navigator initialRouteName="Splash" headerMode="none">
+      <FullStack.Navigator initialRouteName="Login" headerMode="none">
         <FullStack.Screen name="Splash" component={Splash} />
           <FullStack.Screen name="Home" component={Home} />
           <FullStack.Screen name="Login" component={Login} />

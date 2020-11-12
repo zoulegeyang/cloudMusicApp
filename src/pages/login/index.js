@@ -61,7 +61,7 @@ const Login = () => {
         try{
             let res = await passwordLoginApi({phone,password});
             let data = await res.json()
-            console.log(data,phone,password)
+            // console.log(data,phone,password)
             if(data.code==200) {
             //    await storeToken(data.token)
                Toast.success('登录成功')
